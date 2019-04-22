@@ -1,0 +1,15 @@
+version: '2'
+services:
+    home-assistant:
+        image: homeassistant/raspberrypi3-homeassistant
+        restart: always
+        command: [ "python", "-m", "homeassistant", "--config", "/config", "--log-rotate-days", '3' ]
+        volumes:
+            - ./config:/config
+            - /etc/localtime:/etc/localtime:ro
+            - /etc/timezone:/etc/timezone:ro
+        ports:
+            - "8123:8123"
+            - "8943:8943"
+        devices:
+            - /dev/ttyUSB0
