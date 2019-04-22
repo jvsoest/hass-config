@@ -14,7 +14,7 @@ homeassistant:
   customize: !include customize.yaml
 
 # Show links to resources in log and frontend
-introduction:
+#introduction:
 
 # Enables the frontend
 frontend:
@@ -60,6 +60,13 @@ sensor:
   - platform: dsmr
     dsmr_version: 5
     port: /dev/ttyUSB0
+
+influxdb:
+  host: influx
+  port: 8086
+  database: homeassistant
+  username: root
+  password: r00t
 
 # Text to speech
 tts:

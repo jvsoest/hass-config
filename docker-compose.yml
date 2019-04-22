@@ -13,3 +13,18 @@ services:
             - "8943:8943"
         devices:
             - /dev/ttyUSB0
+        links:
+            - influx
+    influx:
+        image: hypriot/rpi-influxdb
+        restart: always
+        volumes:
+            - ./influx/data:/data
+            - /etc/localtime:/etc/localtime:ro
+        environment:
+            ADMIN_USER: "root"
+            INFLUX_INIT_PWD: "r00t"
+            PRE_CREATE_DB: "homeassistant"
+        ports:
+            - "8086:8086"
+            - "8083:8083"
