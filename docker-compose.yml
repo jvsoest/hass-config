@@ -28,3 +28,12 @@ services:
         ports:
             - "8086:8086"
             - "8083:8083"
+    grafana:
+        image: grafana/grafana:latest
+        restart: always
+        ports:
+            - "3000:3000"
+        volumes:
+            - ./grafana:/var/lib/grafana
+        links:
+            - influx
